@@ -233,8 +233,8 @@ Number = int|float
 
 # UI
 ## Functions
-def nav_ToggleCombatScreen() -> None:
-    CombatScreen.visible = False
+def nav_SwitchToCombatScreen() -> None:
+    CombatScreen.visible = True
 
 ## Topbar
 menu_Topbar = Menu(
@@ -253,7 +253,7 @@ nav_CombatScreen = Menu.Button(
     menu_Topbar,
     -155, 0,
     90, menu_Topbar.height,
-    onclick=nav_ToggleCombatScreen,
+    onclick=nav_SwitchToCombatScreen,
     fill=app.background,
     border=menu_Topbar.borderBottom.fill,
     borderWidth=3,
@@ -269,7 +269,13 @@ Topbar = Group(
 
 # Game Areas
 ## Combat Screen
-CombatScreen = Group()
+menu_CombatScreen = Menu(
+    menu_Topbar.borderBottom.x1, menu_Topbar.borderBottom.y1,
+    menu_Topbar.borderBottom.x2, app.height-menu_Topbar.height,
+    fill=None
+)
+
+CombatScreen = Group( menu_CombatScreen )
 
 # Event Listeners
 def onMousePress(x: Number, y: Number):
