@@ -1,3 +1,6 @@
+from cmu_graphics import *
+app.title = "cmug game"
+
 from typing import Dict
 
 class Menu(Rect):
@@ -280,3 +283,5 @@ CombatScreen = Group( menu_CombatScreen )
 # Event Listeners
 def onMousePress(x: Number, y: Number):
     menu_Topbar.addEventListener(x, y)
+
+cmu_graphics.run() # type: ignore
